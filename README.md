@@ -17,7 +17,7 @@ The Raycaster engine was first developed by John Carmack of id Software in 1991 
 
 Raycasting allowed for a pseudo-3D effect. All logic is performed in a 2D grid where rays are cast from the position of the player to detect objects. If the ray detects an object, it will be rendered in a 3D view to the player. This is also why the player can move forwards, backwards, left, and right, but not up or down: the Wolfenstein map is all flat.
 
-The raycaster engine was one of, if not the fastest 3D rendering engine at the time and allowed high-paced action games to played on PCs intended for processing word documents.
+The raycaster engine was one of, if not the fastest 3D rendering engine at the time and allowed high-paced action games to be played on PCs intended for processing word documents.
 
 [Play Wolfenstein 3D](https://playclassic.games/games/first-person-shooter-dos-games-online/play-wolfenstein-3d-online/play/)
 
