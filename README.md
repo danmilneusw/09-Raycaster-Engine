@@ -1,10 +1,25 @@
 # 09-Raycaster-Engine
 ## Introduction
-The Raycaster engine was first developed by John Carmack of id Software
-[Play Wolfenstein3D](https://playclassic.games/games/first-person-shooter-dos-games-online/play-wolfenstein-3d-online/play/)
+The Raycaster engine was first developed by John Carmack of id Software in 1991 and 1992 for Wolfenstein 3D. It also was used for:
+- 1992: Wolfenstein 3D
+- 1992: Spear of Destiny
+- 1993: Blake Stone: Aliens of Gold
+- 1993: Wolf VR
+- 1993: Blake VR
+- xxxx: Hellraiser (cancelled)
+- 1994: Corridor 7: Alien Invasion
+- 1994: Cybertag
+- 1994: Spear Mission Packs (Lost Episodes)
+- 1994: Super 3D Noah’s Ark
+- 1994: Operation Body Count
+- 1994: Blake Stone: Planet Strike
+- 1994: Rise of the Triad
 
+Raycasting allowed for a pseudo-3D effect. All logic is performed in a 2D grid where rays are cast from the position of the player to detect objects. If the ray detects an object, it will be rendered in a 3D view to the player. This is also why the player can move forwards, backwards, left, and right, but not up or down: the Wolfenstein map is all flat.
 
-https://www.youtube.com/watch?v=qhb7cehwChc
+The raycaster engine was one of, if not the fastest 3D rendering engine at the time and allowed high-paced action games to played on PCs intended for processing word documents.
+
+[Play Wolfenstein 3D](https://playclassic.games/games/first-person-shooter-dos-games-online/play-wolfenstein-3d-online/play/)
 
 
 <div align="center">
@@ -19,7 +34,15 @@ https://www.youtube.com/watch?v=qhb7cehwChc
 </div>
 <br>
 
+## Summary
+- Get familiar Pygame
+- Create a Raycaster engine
+- Profile using SnakeViz
+- Attempt optimisation
+
 ## Tutorial
+I recommend you use VS Code for this tutorial and for any time we use Python. You can use IDLE if you want, but you will miss out on the builtin terminal, which we'll use later when we profile, and in-editor error checking. On the University machines the program might just be called 'Code'.
+
 ### Step 1 - Pygame Boilerplate
 Start with the standard boilerplate for Pygame. Running this will shown a black screen with a height half its width. We define the standard Pygame code to create a window and create a main() function that resembles the Update() function of our Unity projects. We set the FPS to be locked at 60 (increase if you want). There's also code for terminating the script on pressing Esc or actually closing the window by pressing the X button.
 
@@ -554,22 +577,62 @@ pygame.draw.rect(screen, (color, color, color), (
                         SCALE, wall_height))
 ```
 
-### Part 9 - Adding a Map Editor
-Our map is only 10 x 10. Wolfenstein3D used a much larger map. I have made a map editor for you. Open map_editor.py and run the script. Save the default map for now and press save. Swap the `MAP` variable with `MAP = np.loadtxt("map.csv", dtype=int)` to load the csv. Test your game. This should run badly; the raycaster engine is specifically designed for corridors and small rooms. Define your own map and you will see performance is better in places where only a few walls have to be rendered as opposed to many like you'd get in an open space.
+<div align="center">
+  <a href="Images\08.png" target="_blank">
+    <img src="Images\08.png" style="height:300px;"/>
+  </a>
+</div>
 
-### Profiling
-Import PyViz
+### Part 9 - Adding a Map Editor
+Our map is only 10 x 10. Wolfenstein 3D used a much larger map. I have made a map editor for you. Open map_editor.py and run the script. Save the default map for now and press save. Swap the `MAP` variable with `MAP = np.loadtxt("map.csv", dtype=int)` to load the csv. Test your game. This should run badly; the raycaster engine is specifically designed for corridors and small rooms. Define your own map and you will see performance is better in places where only a few walls have to be rendered as opposed to many like you'd get in an open space.
+
+## Profiling
+SnakeViz is a Python profiler with handy visualisation tools. It's not as sophisticated as the Unity Profiler, but it's an ok equivalent.
+
+### Install SnakeViz
+Open the Terminal with "Ctrl" + the key below escape (sorry this markdown file won't let me use that key as it's used for creating codeblocks in markdowns!) and paste in `pip install snakeviz` then press enter.
+
+Alternatively, you can open the Anaconda Prompt program. Paste in `pip install snakeviz` and press enter to install SnakeViz.
+
+Then, like in the screenshot below, ensure your terminal or Anaconda Prompt is in the current directory containing your Python file. Use `cd <full file path to the folder containing your python file>` to navigate the terminal there if it isn't already. And paste in `python -m cProfile -o raycaster.prof .\<name of your python file>`, make sure to replace `<name of your python file>` with your file (mine is called 10_no_2d.py). Pressing enter will use Python's inbuilt cProfile module and export the output to a file name `raycaster.prof`. Paste in `snakeviz .\raycaster.prof` and press enter. This will open the browser and display the results of the profile using SnakeViz.
+
+If this is all a bit confusing at first, try profiling the file `profiling_example.py` first using SnakeViz to more easily understand what information you're shown.
+
+<div align="center">
+  <a href="Images\SnakeViz Terminal.png" target="_blank">
+    <img src="Images\SnakeViz Terminal.png" style="height:200px;"/>
+  </a>
+</div>
+
+Experiment with the options to understand what it is capable of.
+
+<div align="center">
+  <a href="Images\SnakeViz Icicle.png" target="_blank">
+    <img src="Images\SnakeViz Icicle.png" style="height:300px;"/>
+  </a>
+</div>
+
+<div align="center">
+  <a href="Images\SnakeViz Sunburst.png" target="_blank">
+    <img src="Images\SnakeViz Sunburst.png" style="height:300px;"/>
+  </a>
+</div>
 
 ### Optimization Task
 For your assessment, you will be tasked with optimising a Pygame particles simulator. To get some practice for this, see about how you can optimise the raycasting algorithm (the ray_casts function). This doesn't mean optimising by using whatever quick Python hacks exists, but optimising by improving the logic so we get the same results but more efficiently. Try yourself and ask if you'd like me to tell you the solution (it will still be up to you to figure out how to implement it!).
 
 ## Extra Resources
-OpenGL Raycaster https://www.youtube.com/watch?v=gYRrGTC7GtA&t=244s
-Cool example https://www.reddit.com/r/pygame/comments/jjmb7f/i_have_been_working_on_a_ray_caster_engine_in/
-Code Monkey King/maksimKorzh https://github.com/maksimKorzh/raycasting-tutorials/tree/main/tutorial
-GitHub ChristianD376 https://github.com/ChristianD37/Pygame-Raycaster/tree/master
-Killer Robotis https://killerrobotics.me/2021/08/13/raycasting-game-in-python-and-pygame-part-1/
+### Cool Raycaster Examples
+- [Pretty Raycaster Demo](https://www.reddit.com/r/pygame/comments/jjmb7f/i_have_been_working_on_a_ray_caster_engine_in/)
+- [Super Mario Bros. in Python Pygame Raycaster](https://www.youtube.com/watch?v=NXhRi8UgzZk)
 
-https://www.youtube.com/watch?v=ECqUrT7IdqQ&t=767s
 
-Super Mario Bros. in Python Pygame Raycaster https://www.youtube.com/watch?v=NXhRi8UgzZk
+### Raycaster Tutorials
+- [Pygame Raycaster with Textiles and Sprites](https://www.youtube.com/watch?v=ECqUrT7IdqQ&t=767s)
+- [Killer Robotics Blog on Pygame Raycaster with Sprites and Textiles](https://killerrobotics.me/2021/08/13/raycasting-game-in-python-and-pygame-part-1/)
+- [C++ OpenGL Raycaster Tutorial](https://www.youtube.com/watch?v=gYRrGTC7GtA&t=244s)
+- [Code Monkey King/GitHub maksimKorzh Pygame Raycaster](https://github.com/maksimKorzh/raycasting-tutorials/tree/main/tutorial)
+- [GitHub ChristianD376 Pygame Raycaster](https://github.com/ChristianD37/Pygame-Raycaster/tree/master)
+
+### SnakeViz
+- [SnakeViz Tutorial](https://www.youtube.com/watch?v=qhb7cehwChc)
