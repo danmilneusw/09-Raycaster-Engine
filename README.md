@@ -24,7 +24,7 @@ The raycaster engine was one of, if not the fastest 3D rendering engine at the t
 
 <div align="center">
   <a href="Images\Wolf3d_pc.png" target="_blank">
-    <img src="Images\Wolf3d_pc.png" style="height:300px;"/>
+    <img src="Images\Wolf3d_pc.png" style="height:400px;"/>
   </a>
 </div>
 <div align="center">
@@ -35,13 +35,13 @@ The raycaster engine was one of, if not the fastest 3D rendering engine at the t
 <br>
 
 ## Summary
-- Get familiar Pygame
+- Get familiar with Pygame
 - Create a Raycaster engine
 - Profile using SnakeViz
 - Attempt optimisation
 
 ## Tutorial
-I recommend you use VS Code for this tutorial and for any time we use Python. You can use IDLE if you want, but you will miss out on the builtin terminal, which we'll use later when we profile, and in-editor error checking. On the University machines the program might just be called 'Code'.
+I recommend you use VS Code for this tutorial and for any time we use Python. You can use IDLE if you want, but you will miss out on the builtin terminal, which we'll use later when we profile, and in-editor error checking. On the University machines the program might just be called 'Code'. For today, create a python file and save it in the same location as the README.md file.
 
 ### Step 1 - Pygame Boilerplate
 Start with the standard boilerplate for Pygame. Running this will shown a black screen with a height half its width. We define the standard Pygame code to create a window and create a main() function that resembles the Update() function of our Unity projects. We set the FPS to be locked at 60 (increase if you want). There's also code for terminating the script on pressing Esc or actually closing the window by pressing the X button.
@@ -84,7 +84,7 @@ main()
 
 <div align="center">
   <a href="Images\01.png" target="_blank">
-    <img src="Images\01.png" style="height:300px;"/>
+    <img src="Images\01.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -92,7 +92,7 @@ Notice how we also set the display to have VSYNC enabled. This is a setting that
 
 <div align="center">
   <a href="Images\screentearing.gif" target="_blank">
-    <img src="Images\screentearing.gif" style="height:300px;"/>
+    <img src="Images\screentearing.gif" style="height:400px;"/>
   </a>
 </div>
 
@@ -181,7 +181,7 @@ We defined the width of the window (WIDTH) as 1000 and defined the tile size (TI
 
 <div align="center">
   <a href="Images\02.png" target="_blank">
-    <img src="Images\02.png" style="height:300px;"/>
+    <img src="Images\02.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -190,7 +190,7 @@ We must define some variables that will hold some information on the player. The
 
 <div align="center">
   <a href="Images\radians.gif" target="_blank">
-    <img src="Images\radians.gif" style="height:300px;"/>
+    <img src="Images\radians.gif" style="height:400PX;"/>
   </a>
 </div>
 <div align="center">
@@ -225,7 +225,7 @@ The code above draws a red circle at the position we defined earlier with a size
 
 <div align="center">
   <a href="Images\03_still.png" target="_blank">
-    <img src="Images\03_still.png" style="height:300px;"/>
+    <img src="Images\03_still.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -249,7 +249,7 @@ We have no collision detection implemented yet, so we know it's possible to go t
 
 <div align="center">
   <a href="Images\03_no_fill.png" target="_blank">
-    <img src="Images\03_no_fill.png" style="height:300px;"/>
+    <img src="Images\03_no_fill.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -286,7 +286,7 @@ pygame.draw.line(screen, (0, 255, 0), (player_x, player_y),
 
 <div align="center">
   <a href="Images\04.png" target="_blank">
-    <img src="Images\04.png" style="height:300px;"/>
+    <img src="Images\04.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -420,7 +420,7 @@ Your game view should look like this:
 
 <div align="center">
   <a href="Images\05.png" target="_blank">
-    <img src="Images\05.png" style="height:300px;"/>
+    <img src="Images\05.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -428,7 +428,7 @@ If we reduce the number of CASTED_RAYS, we reduce the amount of times the main l
 
 <div align="center">
   <a href="Images\05_12_rays_only.png" target="_blank">
-    <img src="Images\05_12_rays_only.png" style="height:300px;"/>
+    <img src="Images\05_12_rays_only.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -436,7 +436,7 @@ We can optimise by reducing MAX_DEPTH, which holds the value of the longest a ra
 
 <div align="center">
   <a href="Images\05_max_depth.png" target="_blank">
-    <img src="Images\05_max_depth.png" style="height:300px;"/>
+    <img src="Images\05_max_depth.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -516,7 +516,7 @@ The line `depth *= math.cos(player_angle - start_angle)` corrects this distortio
 
 <div align="center">
   <a href="Images\06.png" target="_blank">
-    <img src="Images\06.png" style="height:300px;"/>
+    <img src="Images\06.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -579,7 +579,7 @@ pygame.draw.rect(screen, (color, color, color), (
 
 <div align="center">
   <a href="Images\08.png" target="_blank">
-    <img src="Images\08.png" style="height:300px;"/>
+    <img src="Images\08.png" style="height:400px;"/>
   </a>
 </div>
 
@@ -587,9 +587,22 @@ pygame.draw.rect(screen, (color, color, color), (
 Our map is only 10 x 10. Wolfenstein 3D used a much larger map. I have made a map editor for you. Open map_editor.py and run the script. Save the default map for now and press save. Swap the `MAP` variable with `MAP = np.loadtxt("map.csv", dtype=int)` to load the csv. Test your game. This should run badly; the raycaster engine is specifically designed for corridors and small rooms. Define your own map and you will see performance is better in places where only a few walls have to be rendered as opposed to many like you'd get in an open space.
 
 ## Profiling
+### FPS Counter
+I have provided a script for an FPS counter called fps.py. Ensure it is in the same directory as your raycaster engine. Implementing the contents of fps.py to your script is fairly easy.
+
+- At the top of your script add: `from fps import FPS`
+- After defining the `clock` add an FPS object with: `fps = FPS(clock)`
+- Just before updating the display in the main loop add: `fps.render(screen)`
+
+<div align="center">
+  <a href="Images\FPS.png" target="_blank">
+    <img src="Images\FPS.png" style="height:400px;"/>
+  </a>
+</div>
+
+### SnakeViz
 SnakeViz is a Python profiler with handy visualisation tools. It's not as sophisticated as the Unity Profiler, but it's an ok equivalent.
 
-### Install SnakeViz
 Open the Terminal with "Ctrl" + the key below escape (sorry this markdown file won't let me use that key as it's used for creating codeblocks in markdowns!) and paste in `pip install snakeviz` then press enter.
 
 Alternatively, you can open the Anaconda Prompt program. Paste in `pip install snakeviz` and press enter to install SnakeViz.
@@ -608,13 +621,13 @@ Experiment with the options to understand what it is capable of.
 
 <div align="center">
   <a href="Images\SnakeViz Icicle.png" target="_blank">
-    <img src="Images\SnakeViz Icicle.png" style="height:300px;"/>
+    <img src="Images\SnakeViz Icicle.png" style="height:400px;"/>
   </a>
 </div>
 
 <div align="center">
   <a href="Images\SnakeViz Sunburst.png" target="_blank">
-    <img src="Images\SnakeViz Sunburst.png" style="height:300px;"/>
+    <img src="Images\SnakeViz Sunburst.png" style="height:400px;"/>
   </a>
 </div>
 
