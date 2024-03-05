@@ -305,7 +305,7 @@ First, let's define some new variables. We need a variable to hold the number of
 
 ```
 N_RAYS = 100
-STEP_ANGLE = FOV / CASTED_RAYS
+STEP_ANGLE = FOV / N_RAYS
 MAX_DEPTH = int(MAP_SIZE * TILE_SIZE)
 ```
 
@@ -432,7 +432,7 @@ Your game view should look like this:
   </a>
 </div>
 
-If we reduce the number of CASTED_RAYS, we reduce the amount of times the main loop in cast_rays runs for, optimising our loop. A number too low however, will result in walls being missed:
+If we reduce the number of N_RAYS, we reduce the amount of times the main loop in cast_rays runs for, optimising our loop. A number too low however, will result in walls being missed:
 
 <div align="center">
   <a href="Images\05_12_rays_only.png" target="_blank">
