@@ -611,7 +611,7 @@ I have provided a script for an FPS counter called fps.py. Ensure it is in the s
 ### SnakeViz
 SnakeViz is a Python profiler with handy visualisation tools. It's not as sophisticated as the Unity Profiler, but it's an ok equivalent.
 
-Open the Terminal with "Ctrl" + the key below escape (sorry this markdown file won't let me use that key as it's used for creating codeblocks in markdowns!) and paste in `pip install snakeviz` then press enter.
+Open the Terminal with "Ctrl" + "'" (typicvally the key with the @ symbol on or the key below the escape key) and paste in `pip install snakeviz` then press enter.
 
 Alternatively, you can open the Anaconda Prompt program. Paste in `pip install snakeviz` and press enter to install SnakeViz.
 
