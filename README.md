@@ -115,7 +115,7 @@ MAP = np.array([
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])
-TILE_SIZE = 50      # the size of a single tile/1
+TILE_SIZE = 50      # the size of a single tile
 MAP_SIZE = len(MAP) # = 10
 ```
 
