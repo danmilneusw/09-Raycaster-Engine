@@ -245,6 +245,14 @@ if keys[pygame.K_DOWN] or keys[pygame.K_s]:
     player_y -= math.cos(player_angle) * player_speed
 ```
 
+You also need to remind Python that these are global variables, so add the following to the top of the main() function:
+
+```
+    global player_angle
+    global player_x
+    global player_y
+```
+
 We have no collision detection implemented yet, so we know it's possible to go through walls, but something unusual is that we can make some trippy patterns by moving outside of the 2D grid...
 
 <div align="center">
