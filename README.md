@@ -599,7 +599,7 @@ Our map is only 10 x 10. Wolfenstein 3D used a much larger map. I have made a ma
 I have provided a script for an FPS counter called fps.py. Ensure it is in the same directory as your raycaster engine. Implementing the contents of fps.py to your script is fairly easy.
 
 - At the top of your script add: `from fps import FPS`
-- After defining the `clock` add an FPS object with: `fps = FPS(clock)`
+- After defining the `clock` using `clock = pygame.time.Clock()` add an FPS object with: `fps = FPS(clock)`
 - Just before updating the display in the main loop add: `fps.render(screen)`
 
 <div align="center">
